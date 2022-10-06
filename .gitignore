@@ -28,7 +28,7 @@ hs_err_pid*
 
 HELP.md
 target/
-.DS_Store
+~/.DS_Store
 .settings/
 
 
