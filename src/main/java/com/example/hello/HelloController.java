@@ -24,7 +24,7 @@ public class HelloController {
 		model.addAttribute("sample",str);
 
 		//response.htmlに画面遷移
-		return"hello/response";
+		return "hello/response";
 		
 		}
 
