@@ -12,7 +12,11 @@
  	<title th:text="#{user.signup.title}"></title>
  </head>
  <body class="bg-light">
- 	<form id="signup-form" method="post" action="/user/signup" class="form-signup" th:object="${signupForm}">
+ 	<form id="signup-form" 
+ 		method="post" 
+ 			action="/user/signup" 
+ 				class="form-signup" 
+ 					th:object="${signupForm}">
  	<h1 class ="text-center" th:text="#{user.signup.title}"></h1>
  	<!-- ユーザーID -->
  	<div class ="form-group">
@@ -43,8 +47,7 @@
  	<div class="form-group">
  		<div th:each="item : ${genderMap}" class="form-check-inline">
  		<input type="radio" class="form-check-input" th:value="${item.value}" th:field="*{gender}"/>
- 		<label class="form-check-label" th:text="${item.key}">
- 	</label>
+ 		<label class="form-check-label" th:text="${item.key}"></label>
  		</div>
 	 </div>
 	 <!-- 登録ボタン -->
