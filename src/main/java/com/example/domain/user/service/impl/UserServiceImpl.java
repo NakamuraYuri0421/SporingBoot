@@ -23,8 +23,8 @@ public class UserServiceImpl implements UserService{
 	}
 		/**ユーザー取得*/
 		@Override
-		public List<MUser> getUsers(){
-			return mapper.findMany();
+		public List<MUser> getUsers(MUser user){
+			return mapper.findMany(user);
 	}
 		/**ユーザー取得(1件)*/
 		@Override
@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService{
 			return mapper.findOne(userId);
 	}
 		
-		/**ユーザー取得(1件)*/
+		/**ユーザー更新(1件)*/
 		@Override
 		public void updateUserOne(String userId,String password,String userName) {
 			mapper.updateOne(userId,password,userName);
