@@ -65,7 +65,10 @@
 	</update>
 	<!-- ユーザー1件更新 -->
 	<delete id ="deleteOne">
-	delete from m_user
-	where user_id=#{userId}
+	delete 
+	from 
+		m_user
+	where 
+		user_id=#{userId}
 	</delete>
 </mapper>
