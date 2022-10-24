@@ -12,8 +12,8 @@ public class UserApplicationService {
 	/**性別のMapを生成する*/
 	public Map<String,Integer> getGenderMap(){
 		Map<String,Integer> genderMap = new LinkedHashMap<>();
-			genderMap.put("男性", 1);
-			genderMap.put("女性", 1);
-			return genderMap;
+		genderMap.put("男性", 1);
+		genderMap.put("女性", 1);
+		return genderMap;
 	}
 }
