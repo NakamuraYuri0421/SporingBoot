@@ -4,7 +4,7 @@
 <mapper namespace="com.example.repository.UserMapper">
 <!-- ユーザー１件登録 -->
 <insert id="insertOne">
-	insert into m_user(
+insert into m_user(
 	user_id
 	,password
 	,user_name
@@ -23,14 +23,14 @@
 	,#{gender}
 	,#{departmentId}
 	,#{role}
-	)
+)
 </insert>
 
-	<!-- ユーザー複数件取得 -->
-	<select id ="findMany" resultType="MUser">
-	select 
-		*
-	from 
-		m_user
-	</select>
+<!-- ユーザー複数件取得 -->
+<select id ="findMany" resultType="MUser">
+select 
+	*
+from 
+	m_user
+</select>
 </mapper>
