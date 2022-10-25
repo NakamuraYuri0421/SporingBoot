@@ -40,17 +40,17 @@
 	<!-- ユーザー複数件取得 -->
 	<select id ="findMany" resultType="MUser">
 	select 
-		*
+			*
 	from 
-		m_user
+			m_user
 	</select>
 	<!-- ユーザー１件検索 -->
 	<select id="findOne" resultMap="user">
 	select 
-		*
+			*
 	from 
-		m_user
+			m_user
 	where 
-		user_id = #{userId}
+			user_id = #{userId}
 	</select>
 </mapper>
