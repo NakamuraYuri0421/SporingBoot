@@ -10,7 +10,8 @@ VALUES
    'Tom',
    30
 );
-/*ユーザーマスタ*/ INSERT INTO m_user
+/*ユーザーマスタ*/ 
+INSERT INTO m_user
 (
    user_id,
    password,
@@ -43,7 +44,8 @@ VALUES
    1,
    'ROLE_GENERAL'
 );
-/*部署マスタ*/ INSERT INTO m_depaetment
+/*部署マスタ*/ 
+INSERT INTO m_depaetment
 (
    department_id,
    department_name
@@ -58,7 +60,8 @@ VALUES
    2,
    '営業部'
 );
-/*給料テーブル*/ INSERT INTO t_salay
+/*給料テーブル*/ 
+INSERT INTO t_salay
 (
    user_id,
    year_month,
