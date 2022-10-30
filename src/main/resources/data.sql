@@ -3,6 +3,7 @@ INSERT INTO employee(
    name,
    age
 ) VALUES (
+
    '1',
    'Tom',
    30
