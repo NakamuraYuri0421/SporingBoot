@@ -1,4 +1,4 @@
-INSERT INTO employee (
+INSERT INTO employee(
    id,
    name,
    age
