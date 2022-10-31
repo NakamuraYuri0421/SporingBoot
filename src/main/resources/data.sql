@@ -1,18 +1,14 @@
-INSERT INTO employee
-(
+INSERT INTO employee(
    id,
    name,
    age
-)
-VALUES
-(
+) VALUES (
    '1',
    'Tom',
    30
 );
 /*ユーザーマスタ*/ 
-INSERT INTO m_user
-(
+INSERT INTO m_user(
    user_id,
    password,
    user_name,
@@ -21,9 +17,7 @@ INSERT INTO m_user
    gender,
    department_id,
    role
-)
-VALUES
-(
+) VALUES (
    'system@co.jp',
    'password',
    'システム管理者',
@@ -45,13 +39,10 @@ VALUES
    'ROLE_GENERAL'
 );
 /*部署マスタ*/ 
-INSERT INTO m_depaetment
-(
+INSERT INTO m_depaetment(
    department_id,
    department_name
-)
-VALUES
-(
+) VALUES (
    1,
    'システム管理者'
 ),
@@ -61,14 +52,11 @@ VALUES
    '営業部'
 );
 /*給料テーブル*/ 
-INSERT INTO t_salay
-(
+INSERT INTO t_salay(
    user_id,
    year_month,
    salary
-)
-VALUES
-(
+) VALUES (
    'user@co.jp',
    '2020/11',
    280000
