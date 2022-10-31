@@ -23,10 +23,5 @@ CREATE TABLE IF NOT EXISTS m_department(
 CREATE TABLE IF NOT EXISTS t_salary(
    user_id VARCHAR (50),
    year_month VARCHAR (50),
-   salary INT,
-   PRIMARY KEY
-   (
-      user_id,
-      year_month
-   )
+   salary INT PRIMARY KEY
 );
