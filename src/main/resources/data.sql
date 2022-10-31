@@ -1,11 +1,8 @@
-INSERT INTO employee
-(
+INSERT INTO employee(
    id,
    name,
    age
-)
-VALUES
-(
+) VALUES (
    '1',
    'Tom',
    30
