@@ -52,7 +52,7 @@ INSERT INTO m_department(
    '営業部'
 );
 /*給料テーブル*/ 
-INSERT INTO t_salay(
+INSERT INTO t_salary(
    user_id,
    year_month,
    salary

@@ -14,6 +14,8 @@
 		<result column="department_id" property="departmentId" />
 		<result column="role" property="role" />
 		<association property="department" resultMap="department" />
+		<collection property="salaryList" resultMap="salary"
+			columnPrefix="salary_" />
 	</resultMap>
 	<!-- マッピング定義（部署） -->
 	<resultMap type="com.example.domain.user.model.Department"
@@ -43,6 +45,7 @@
 	<select id="findOne" resultMap="user">
 		select * from m_user left join m_department on m_user.department_id = m_department.department_id where user_id = #{userId}
 	</select>
+
 	<!-- ユーザー1件更新 -->
 	<update id="updateOne">
 		update m_user set password = #{password}, user_name = #{userName} where user_id = #{userId}
@@ -50,5 +53,6 @@
 	<!-- ユーザー1件更新 -->
 	<delete id="deleteOne">
 		delete from m_user where user_id=#{userId}
+
 	</delete>
 </mapper>
