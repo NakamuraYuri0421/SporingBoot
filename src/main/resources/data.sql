@@ -39,7 +39,7 @@ INSERT INTO m_user(
    'ROLE_GENERAL'
 );
 /*部署マスタ*/ 
-INSERT INTO m_depaetment(
+INSERT INTO m_department(
    department_id,
    department_name
 ) VALUES (
