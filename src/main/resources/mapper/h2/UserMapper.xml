@@ -3,8 +3,7 @@
 <!-- Mapper と xmlのマッピング -->
 <mapper namespace="com.example.repository.UserMapper">
 	<!-- マッピング定義(ユーザー) -->
-	<resultMap type="com.example.domain.user.model.MUser"
-		id="user">
+	<resultMap type="com.example.domain.user.model.MUser" id="user">
 		<id column="user_id" property="userId" />
 		<result column="password" property="password" />
 		<result column="user_name" property="userName" />
