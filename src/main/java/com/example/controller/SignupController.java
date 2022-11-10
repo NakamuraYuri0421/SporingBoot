@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/user")
 @Slf4j
 public class SignupController {
-	
+
 	@Autowired
 	private UserApplicationService userApplicationService;
 	
@@ -47,8 +49,8 @@ public class SignupController {
 		//ユーザー登録画面に遷移
 		return "user/signup";
 	}
-	
-	/**ユーザー登録処理*/
+
+	/** ユーザー登録処理 */
 	@PostMapping("/signup")
 	public String postSignup(Model model,Locale locale,@ModelAttribute @Validated (GroupOrder.class) SignupForm form,BindingResult bindingResult) {
 		
@@ -68,6 +70,71 @@ public class SignupController {
 		
 		//ログイン画面にリダイレクト
 		return "redirect:/login";
-		
 	}
+
+	/** データベース関連の例外処理 */
+	@ExceptionHandler(DataAccessException.class)
+	public String dataAccessExceptionHandler(DataAccessException e, Model model) {
+
+		// 空文字をセット
+		model.addAttribute("error", "");
+
+		// メッセージをModelに登録
+		model.addAttribute("message", "SignupControllerで例外が発生しました");
+
+		// HTTPのエラーコード（500）をModelに登録
+		model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
+
+		return "error";
+	}
+
+	/** その他の例外処理 */
+	@ExceptionHandler(Exception.class)
+	public String exceptionHandler(Exception e, Model model) {
+
+		// 空文字をセット
+		model.addAttribute("error", "");
+
+		// メッセージをModelに登録
+		model.addAttribute("message", "SignupControllerで例外が発生しました");
+
+		// HTTPのエラーコード（500）をModelに登録
+		model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
+
+		return "error";
+
+	}
+
+	// **データベース関連の例外処理*/
+	@ExceptionHandler(DataAccessException.class)
+	public String dataAccessExceptionHandler(DataAccessException e, Model model) {
+
+		// 空文字をリセット
+		model.addAttribute("error", "");
+
+		// メッセージをModelに登録
+		model.addAttribute("message", "SignupControllerで例外が発生しました");
+
+		// HTTPのエラー（500）をModelに登録
+		model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
+
+		return "error";
+	}
+
+	// **その他の例外処理*/
+	@ExceptionHandler(Exception.class)
+	public String exceptionHandler(Exception e, Model model) {
+
+		// 空文字をリセット
+		model.addAttribute("error", "");
+
+		// メッセージをModelに登録
+		model.addAttribute("message", "SignupControllerで例外が発生しました");
+
+		// HTTPのエラー（500）をModelに登録
+		model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
+
+		return "error";
+	}
+
 }

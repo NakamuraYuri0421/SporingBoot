@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.domain.user.model.MUser;
 import com.example.domain.user.service.UserService;
 import com.example.repository.UserMapper;
@@ -30,7 +29,5 @@ public class UserServiceImpl implements UserService{
 		@Override
 		public MUser getUserOne(String userId) {
 			return mapper.findOne(userId);
-		
-	}
-
+	  }
 }
