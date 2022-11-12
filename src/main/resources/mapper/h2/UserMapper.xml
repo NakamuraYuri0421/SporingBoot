@@ -3,9 +3,7 @@
 <!-- Mapper と xmlのマッピング -->
 <mapper namespace="com.example.repository.UserMapper">
 	<!-- マッピング定義(ユーザー) -->
-	<resultMap type="com.example.domain.user.model.MUser"
-		id="user">
-    
+	<resultMap type="com.example.domain.user.model.MUser"id="user">
 		<id column="user_id" property="userId" />
 		<result column="password" property="password" />
 		<result column="user_name" property="userName" />
@@ -16,8 +14,9 @@
 		<result column="role" property="role" />
 		<association property="department" resultMap="department" />	
 		<collection property="salaryList" resultMap="salary" columnPrefix="salary_" />
+	</resultMap>
 		
-		<!-- マッピング定義（部署） -->	
+	<!-- マッピング定義（部署） -->	
 	<resultMap type="com.example.domain.user.model.Department"	
 		id="department">	
 		<id column="department_id" property="departmentId" />	
