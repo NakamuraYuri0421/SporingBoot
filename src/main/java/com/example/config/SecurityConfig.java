@@ -30,8 +30,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 
 		// セキュリティを適用しない
-		web.ignoring().antMatchers("/webjars/**").antMatchers("/css/**").antMatchers("/js/**")
-				.antMatchers("/h2-console/**");
+		web.ignoring().antMatchers("/webjars/**")
+						.antMatchers("/css/**")
+						.antMatchers("/js/**")
+						.antMatchers("/h2-console/**");
 	}
 
 	/** セキュリティの各種設定 */
@@ -39,15 +41,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		// ログイン不要ページの設定
-		http.authorizeRequests().antMatchers("/login").permitAll().antMatchers("/user/signup").permitAll().antMatchers("/admin").hasAuthority("ROLE_ADMIN")//権限制御
+		http.authorizeRequests().antMatchers("/login").permitAll()
+			.antMatchers("/user/signup").permitAll()
+			.antMatchers("/user/signup/rest").permitAll()
+			.antMatchers("/admin").hasAuthority("ROLE_ADMIN")//権限制御
 			.anyRequest().authenticated(); // それ以外は直リンクNG
 
 		// ログイン処理
-		http.formLogin().loginProcessingUrl("/login").loginPage("/login").failureUrl("/login?error")
-				.usernameParameter("userId").passwordParameter("password").defaultSuccessUrl("/user/list", true);
+		http.formLogin().loginProcessingUrl("/login")
+						.loginPage("/login")
+						.failureUrl("/login?error")
+						.usernameParameter("userId")
+						.passwordParameter("password")
+						.defaultSuccessUrl("/user/list", true);
 		
 		//ログアウト処理
-		http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutUrl("/logout").logoutSuccessUrl("/login?logout");
+		http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+						.logoutUrl("/logout")
+						.logoutSuccessUrl("/login?logout");
 		
 		// CSRF対策を無効に設定（一時的）
 		//http.csrf().disable();
