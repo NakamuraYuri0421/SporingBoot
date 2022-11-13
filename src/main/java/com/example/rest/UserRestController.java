@@ -1,6 +1,7 @@
 package com.example.rest;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,8 @@ import com.example.domain.user.service.UserService;
 import com.example.form.GroupOrder;
 import com.example.form.SignupForm;
 import com.example.form.UserDetailForm;
+
+import UserListForm.UserListForm;
 
 
 @RestController
@@ -35,7 +39,19 @@ public class UserRestController {
 	@Autowired
 	private MessageSource messageSource;
 	
-	/**ユーザーを更新*/
+	/**ユーザーを検索*/
+	@GetMapping("/get/list")
+	public List<MUser> getUserList(UserListForm form) {
+		
+		//forをMUserクラスに変換
+		MUser user = modelMapper.map(form, MUser.class);
+		
+		//ユーザー一覧取得
+		List<MUser> userList = userService.getUsers(user);
+		return userList;
+	}
+	
+	/**ユーザーを登録*/
 	@PostMapping("/signup/rest")
 	public RestResult postSignup(@Validated(GroupOrder.class)SignupForm form,BindingResult bindingResult,Locale locale) {
 		
@@ -65,7 +81,6 @@ public class UserRestController {
 	
 	/**ユーザーを更新*/
 	@PutMapping("/update")
-	
 	public int updateUser(UserDetailForm form) {
 		
 		//ユーザーを更新
