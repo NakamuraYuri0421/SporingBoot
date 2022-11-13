@@ -16,48 +16,58 @@ import com.example.repository.UserRepository;
 
 @Service
 @Primary
-public abstract class UserServiceImpl2 implements UserService {
+public class UserServiceImpl2 implements UserService{
 	
 	@Autowired
 	private UserRepository repository;
 	
 	@Autowired
-	private PasswordEncoder encorder;
+	private PasswordEncoder encoder;
 	
 	/**ユーザー登録*/
 	@Transactional
 	@Override
-	public void signup(MUser user) {
+	public void signup(MUser user){
+		
 		//存在チェック
 		boolean exists = repository.existsById(user.getUserId());
-		if(exists) {
-			throw new DataAccessException("ユーザーがすでに存在") {};
+		if(exists){
+			throw new DataAccessException("ユーザーが既に存在"){};
 		}
-	 
+		
 		user.setDepartmentId(1);
 		user.setRole("ROLE_GENERAL");
-	
+		
 		//パスワード暗号化
-		String rawPassword = user.getPassword();
-		user.setPassword(encorder.encode(rawPassword));
-	
+		String rawPassword=user.getPassword();
+		user.setPassword(encoder.encode(rawPassword));
+		
 		//insert
 		repository.save(user);
-	}
-
+		}
+	
 	/**ユーザー取得*/
 	@Override
 	public List<MUser> getUsers(MUser user){
 		return repository.findAll();
 	}
 	
-	/**ユーザー更新(１件)*/
+	/**ユーザー取得(1件)*/
+	@Override
+	public MUser getUserOne(String userId){
+		Optional<MUser> option = repository.findById(userId);
+		MUser user = option.orElse(null);
+		return user;
+	}
+	
+	/**ユーザー更新(1件)*/
 	@Transactional
 	@Override
 	public void updateUserOne(String userId,String password,String userName){
+		
 	}
 	
-	/**ユーザー削除(１件)*/
+	/**ユーザー削除(1件)*/
 	@Transactional
 	@Override
 	public void deleteUserOne(String userId){
@@ -67,7 +77,7 @@ public abstract class UserServiceImpl2 implements UserService {
 	/**ログインユーザー取得*/
 	@Override
 	public MUser getLoginUser(String userId){
-		Optional<MUser> option=repository.findById(userId);
+		Optional<MUser>option = repository.findById(userId);
 		MUser user = option.orElse(null);
 		return user;
 	}
