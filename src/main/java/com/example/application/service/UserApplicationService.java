@@ -19,8 +19,8 @@ public class UserApplicationService {
 		Map<String,Integer> genderMap = new LinkedHashMap<>();
 		String male =messageSource.getMessage("male",null,locale);
 		String female =messageSource.getMessage("female",null,locale);
-			genderMap.put(male, 1);
-			genderMap.put(female, 2);
-			return genderMap;
+		genderMap.put(male, 1);
+		genderMap.put(female, 2);
+		return genderMap;
 	}
 }

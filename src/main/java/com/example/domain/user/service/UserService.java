@@ -23,5 +23,4 @@ public interface UserService {
 	
 	/**ログインユーザー取得情報*/
 	public MUser getLoginUser(String userId);
-
 }
