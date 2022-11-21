@@ -48,12 +48,12 @@ public class UserDetailController {
 	/**ユーザー更新処理*/
 	@PostMapping(value = "/detail",params="update")
 	public String updateUser(UserDetailForm form,Model model) {
-
+		
 		try {
 		//ユーザーを更新
 		userService.updateUserOne(form.getUserId(),
-					form.getPassword(),
-					form.getUserName());
+				form.getPassword(),
+				form.getUserName());
 		} catch (Exception e) {
 			log.error("ユーザー更新でエラー",e);
 		}

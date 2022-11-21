@@ -13,7 +13,7 @@ import com.example.repository.UserMapper;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
+
 	@Autowired
 	private UserMapper mapper;
 
@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 		mapper.insertOne(user);
 	}
 
-		/** ユーザー取得 */
+	/** ユーザー取得 */
 	@Override
 	public List<MUser> getUsers(MUser user) {
 		return mapper.findMany(user);
