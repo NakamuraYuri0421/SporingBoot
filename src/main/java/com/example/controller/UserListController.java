@@ -33,7 +33,7 @@ public class UserListController {
 		MUser user = modelMapper.map(form,MUser.class);
 		
 		//ユーザー一覧取得
-		List<MUser>userList=userService.getUsers(user);
+		List<MUser> userList=userService.getUsers(user);
 		
 		//Modelに登録
 		model.addAttribute("userList",userList);

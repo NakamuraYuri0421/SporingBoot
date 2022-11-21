@@ -63,10 +63,10 @@
 		</dependency>
 		<!--thymeleaf-layout-dialect-->
 		<dependency>
-		<groupId>nz.net.ultraq.thymeleaf</groupId>
-		<artifactId>thymeleaf-layout-dialect</artifactId>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
 		</dependency>
-		<!--bootstrap-->
+		<!--webjars-locator-->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>webjars-locator</artifactId>
@@ -74,8 +74,8 @@
 		</dependency>
 		<!--validator-->
 		<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-validation</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

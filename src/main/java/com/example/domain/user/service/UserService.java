@@ -10,16 +10,16 @@ public interface UserService {
 	public void signup(MUser user);
 	
 	/**ユーザー取得*/
-	public List<MUser> getUsers(Muser user);
+	public List<MUser> getUsers(MUser user);
 	
 	/**ユーザー取得(1件)*/
 	public MUser getUserOne(String userId);
 	
 	/**ユーザー更新(1件)*/	
-	public void updateUserOne(String userId,String password,String userName);	
+	public void updateUserOne(String userId, String password, String userName);
 
 	/**ユーザー削除(1件)*/	
-	public void deleteUserOne(String userId);	
+	public void deleteUserOne(String userId);
 
 	/**ログインユーザー取得情報*/	
 	public MUser getLoginUser(String userId);
