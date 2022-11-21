@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.domain.user.model.MUser;
 import com.example.domain.user.service.UserService;
 import com.example.form.UserDetailForm;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -33,8 +34,8 @@ public class UserDetailController {
 		MUser user=userService.getUserOne(userId);
 		user.setPassword(null);
 		
-		//Muserをformに変換
-		form=modelMapper.map(user, UserDetailForm.class);
+		//Userをformに変換
+		form = modelMapper.map(user, UserDetailForm.class);
 		form.setSalaryList(user.getSalaryList());
 		
 		//Muserに登録
@@ -43,7 +44,7 @@ public class UserDetailController {
 		//ユーザー詳細画面を表示
 		return "user/detail";
 	}
-	
+		
 	/**ユーザー更新処理*/
 	@PostMapping(value = "/detail",params="update")
 	public String updateUser(UserDetailForm form,Model model) {

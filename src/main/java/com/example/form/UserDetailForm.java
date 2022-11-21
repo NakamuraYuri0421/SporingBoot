@@ -1,9 +1,9 @@
 package com.example.form;
 
 import java.util.Date;
-import java.util.List;	
+import java.util.List;
 
-import com.example.domain.user.model.Department;	
+import com.example.domain.user.model.Department;
 import com.example.domain.user.model.Salary;
 
 import lombok.Data;

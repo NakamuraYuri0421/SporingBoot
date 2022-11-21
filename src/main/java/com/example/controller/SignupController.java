@@ -32,17 +32,16 @@ public class SignupController {
 
 	@Autowired
 	private UserApplicationService userApplicationService;
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
-	
-	/**ユーザー登録画面を表示*/
+
+	/** ユーザー登録画面を表示 */
 	@GetMapping("/signup")
-	public String getSignup(Model model,Locale locale,
-			@ModelAttribute SignupForm form){
+	public String getSignup(Model model,Locale locale,@ModelAttribute SignupForm form){
 		//性別を取得
 		Map<String,Integer> genderMap = userApplicationService.getGenderMap(locale);
 		model.addAttribute("genderMap",genderMap);
@@ -53,56 +52,57 @@ public class SignupController {
 
 	/** ユーザー登録処理 */
 	@PostMapping("/signup")
-	public String postSignup(Model model,Locale locale,@ModelAttribute @Validated (GroupOrder.class) SignupForm form,BindingResult bindingResult) {
-		
+	public String postSignup(Model model,Locale locale,@ModelAttribute @Validated (GroupOrder.class) SignupForm form,
+			BindingResult bindingResult) {
+
 		//入力チェック結果
 		if(bindingResult.hasErrors()) {
 			//NG:ユーザー登録画面に戻ります
 			return getSignup(model,locale,form);
 		}
-		
+
 		log.info(form.toString());
-		
-		//formをMUserクラスに変換
-		MUser user =modelMapper.map(form,MUser.class);
-		
-		//ユーザー登録
+
+		// formをMUserクラスに変換
+		MUser user = modelMapper.map(form, MUser.class);
+
+		// ユーザー登録
 		userService.signup(user);
-		
-		//ログイン画面にリダイレクト
+
+		// ログイン画面にリダイレクト
 		return "redirect:/login";
 	}
 
-	/** データベース関連の例外処理 */
+	// **データベース関連の例外処理*/
 	@ExceptionHandler(DataAccessException.class)
 	public String dataAccessExceptionHandler(DataAccessException e, Model model) {
 
-		// 空文字をセット
+		// 空文字をリセット
 		model.addAttribute("error", "");
 
 		// メッセージをModelに登録
 		model.addAttribute("message", "SignupControllerで例外が発生しました");
 
-		// HTTPのエラーコード（500）をModelに登録
+		// HTTPのエラー（500）をModelに登録
 		model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
 
 		return "error";
 	}
 
-	/** その他の例外処理 */
+	// **その他の例外処理*/
 	@ExceptionHandler(Exception.class)
 	public String exceptionHandler(Exception e, Model model) {
 
-		// 空文字をセット
+		// 空文字をリセット
 		model.addAttribute("error", "");
 
 		// メッセージをModelに登録
 		model.addAttribute("message", "SignupControllerで例外が発生しました");
 
-		// HTTPのエラーコード（500）をModelに登録
+		// HTTPのエラー（500）をModelに登録
 		model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
 
 		return "error";
-
 	}
+	
 }
