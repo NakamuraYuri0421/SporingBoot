@@ -45,7 +45,7 @@ public class SignupController {
 		// 性別を取得
 		Map<String, Integer> genderMap = userApplicationService.getGenderMap(locale);
 		model.addAttribute("genderMap", genderMap);
-		
+
 		// ユーザー登録画面に遷移
 		return "user/signup";
 	}
@@ -71,7 +71,6 @@ public class SignupController {
 		// ログイン画面にリダイレクト
 		return "redirect:/login";
 	}
-	
 	// **データベース関連の例外処理*/
 	@ExceptionHandler(DataAccessException.class)
 	public String dataAccessExceptionHandler(DataAccessException e, Model model) {
