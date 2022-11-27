@@ -41,12 +41,12 @@ public class SignupController {
 
 	/** ユーザー登録画面を表示 */
 	@GetMapping("/signup")
-	public String getSignup(Model model,Locale locale,@ModelAttribute SignupForm form){
-		//性別を取得
-		Map<String,Integer> genderMap = userApplicationService.getGenderMap(locale);
-		model.addAttribute("genderMap",genderMap);
+	public String getSignup(Model model, Locale locale, @ModelAttribute SignupForm form) {
+		// 性別を取得
+		Map<String, Integer> genderMap = userApplicationService.getGenderMap(locale);
+		model.addAttribute("genderMap", genderMap);
 		
-		//ユーザー登録画面に遷移
+		// ユーザー登録画面に遷移
 		return "user/signup";
 	}
 
@@ -60,22 +60,18 @@ public class SignupController {
 			return getSignup(model, locale, form);
 		}
 
-		
 		log.info(form.toString());
 
-		
 		// formをMUserクラスに変換
-		MUser user = modelMapper.map(form, MUser.class);lass);
+		MUser user = modelMapper.map(form, MUser.class);
 
-		
 		// ユーザー登録
 		userService.signup(user);
 
-		
 		// ログイン画面にリダイレクト
 		return "redirect:/login";
 	}
-
+	
 	// **データベース関連の例外処理*/
 	@ExceptionHandler(DataAccessException.class)
 	public String dataAccessExceptionHandler(DataAccessException e, Model model) {
