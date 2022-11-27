@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS m_department(
    department_id INT PRIMARY KEY,
    department_name VARCHAR (50)
 );
-/*給料テーブル*/ 
+/*給料テーブル*/
 CREATE TABLE IF NOT EXISTS t_salary(
    user_id VARCHAR (50),
    year_month VARCHAR (50),
