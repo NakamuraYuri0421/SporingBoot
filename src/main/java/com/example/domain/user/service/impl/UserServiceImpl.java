@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
 
 		// パスワード暗号化
 		String encryptPassword = encoder.encode(password);
-		mapper.updateOne(userId, encryptPassword, userName);	
+		mapper.updateOne(userId, encryptPassword, userName);
 
 		// 例外を発生させる
 		// int i = 1/0;
