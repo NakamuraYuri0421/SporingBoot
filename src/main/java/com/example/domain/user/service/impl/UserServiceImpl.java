@@ -16,17 +16,17 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserMapper mapper;
-	
-	@Autowired	
+
+	@Autowired
 	private PasswordEncoder encoder;
 
 	/** ユーザー登録 */
 	public void signup(MUser user) {
 		user.setDepartmentId(1);// 部署
 		user.setRole("ROLE_GENERAL");// ロール
-		
-		// パスワード暗号化	
-		String rawPassword = user.getPassword();	
+
+		// パスワード暗号化
+		String rawPassword = user.getPassword();
 		user.setPassword(encoder.encode(rawPassword));
 		mapper.insertOne(user);
 	}
@@ -49,11 +49,11 @@ public class UserServiceImpl implements UserService {
 	public void updateUserOne(String userId, String password, String userName) {
 		mapper.updateOne(userId, password, userName);
 
-		// パスワード暗号化	
-		String encryptPassword = encoder.encode(password);	
+		// パスワード暗号化
+		String encryptPassword = encoder.encode(password);
 		mapper.updateOne(userId, encryptPassword, userName);	
 
-		// 例外を発生させる	
+		// 例外を発生させる
 		// int i = 1/0;
 	}
 
@@ -62,10 +62,10 @@ public class UserServiceImpl implements UserService {
 	public void deleteUserOne(String userId) {
 		int count = mapper.deleteOne(userId);
 	}
-
-	/**ログインユーザー取得情報*/	
-	@Override	
-	public MUser getLoginUser(String userId) {	
-		return mapper.findLoginUser(userId);	
-	}	
+	
+	/**ログインユーザー取得情報*/
+	@Override
+	public MUser getLoginUser(String userId) {
+		return mapper.findLoginUser(userId);
+	}
 }
