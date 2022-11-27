@@ -46,18 +46,18 @@ public class UserListController {
 	/**ユーザー検索処理*/
 	@PostMapping("/list")
 	public String postUserList(@ModelAttribute UserListForm form, Model model) {
-
+		
 		//formをMUserクラスに変換
 		MUser user = modelMapper.map(form,MUser.class);
-
+		
 		//ユーザー検索
 		List<MUser>userList=userService.getUsers(user);
-
+		
 		//Modelに登録
 		model.addAttribute("userList",userList);
-
+		
 		// ユーザー一覧画面を表示
 		return "user/list";
-
+		
 	}
 }
