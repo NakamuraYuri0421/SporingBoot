@@ -26,7 +26,7 @@ public interface UserMapper {
 	
 	/**ユーザー削除*/
 	public int deleteOne(@Param("userId")String userId);
-
-	/**ログインユーザー取得*/	
+	
+	/**ログインユーザー取得*/
 	public MUser findLoginUser(String userId);
 }
