@@ -45,31 +45,31 @@ public class UserDetailController {
 		return "user/detail";
 	}
 		
-		/**ユーザー更新処理*/
-		@PostMapping(value = "/detail",params="update")
-		public String updateUser(UserDetailForm form,Model model) {
-			
-			try {
-			//ユーザーを更新
-			userService.updateUserOne(form.getUserId(),
-					form.getPassword(),
-					form.getUserName());
-			} catch (Exception e) {
-				log.error("ユーザー更新でエラー",e);
-			}
-			
-			//ユーザー一覧画面にリダイレクト
-			return "redirect:/user/list";
-		}
+	/**ユーザー更新処理*/
+	@PostMapping(value = "/detail",params="update")
+	public String updateUser(UserDetailForm form,Model model) {
 		
-		/**ユーザー削除処理*/
-		@PostMapping(value = "/detail",params="delete")
-		public String deleteUser(UserDetailForm form,Model model) {
-			
-			//ユーザーを削除
-			userService.deleteUserOne(form.getUserId());
-			
-			//ユーザー一覧画面にリダイレクト
-			return "redirect:/user/list";
+		try {
+		//ユーザーを更新
+		userService.updateUserOne(form.getUserId(),
+				form.getPassword(),
+				form.getUserName());
+		} catch (Exception e) {
+			log.error("ユーザー更新でエラー",e);
+		}
+
+		//ユーザー一覧画面にリダイレクト
+		return "redirect:/user/list";
+	}
+
+	/**ユーザー削除処理*/
+	@PostMapping(value = "/detail",params="delete")
+	public String deleteUser(UserDetailForm form,Model model) {
+
+		//ユーザーを削除
+		userService.deleteUserOne(form.getUserId());
+
+		//ユーザー一覧画面にリダイレクト
+		return "redirect:/user/list";
 	}
 }

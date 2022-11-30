@@ -52,8 +52,7 @@ public class SignupController {
 
 	/** ユーザー登録処理 */
 	@PostMapping("/signup")
-	public String postSignup(Model model, Locale locale, @ModelAttribute @Validated(GroupOrder.class) SignupForm form,
-			BindingResult bindingResult) {
+	public String postSignup(Model model, Locale locale, @ModelAttribute @Validated(GroupOrder.class) SignupForm form,BindingResult bindingResult) {
 
 		// 入力チェック結果
 		if (bindingResult.hasErrors()) {
@@ -72,40 +71,6 @@ public class SignupController {
 		// ログイン画面にリダイレクト
 		return "redirect:/login";
 	}
-
-	/** データベース関連の例外処理 */
-	@ExceptionHandler(DataAccessException.class)
-	public String dataAccessExceptionHandler(DataAccessException e, Model model) {
-
-		// 空文字をセット
-		model.addAttribute("error", "");
-
-		// メッセージをModelに登録
-		model.addAttribute("message", "SignupControllerで例外が発生しました");
-
-		// HTTPのエラーコード（500）をModelに登録
-		model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
-
-		return "error";
-	}
-
-	/** その他の例外処理 */
-	@ExceptionHandler(Exception.class)
-	public String exceptionHandler(Exception e, Model model) {
-
-		// 空文字をセット
-		model.addAttribute("error", "");
-
-		// メッセージをModelに登録
-		model.addAttribute("message", "SignupControllerで例外が発生しました");
-
-		// HTTPのエラーコード（500）をModelに登録
-		model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
-
-		return "error";
-
-	}
-
 	// **データベース関連の例外処理*/
 	@ExceptionHandler(DataAccessException.class)
 	public String dataAccessExceptionHandler(DataAccessException e, Model model) {
