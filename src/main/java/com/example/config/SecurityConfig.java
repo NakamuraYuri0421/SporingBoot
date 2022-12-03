@@ -39,8 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		// ログイン不要ページの設定
-		http.authorizeRequests().antMatchers("/login").permitAll().antMatchers("/user/signup").permitAll().antMatchers("/admin").hasAuthority("ROLE_ADMIN")//権限制御
-			.anyRequest().authenticated(); // それ以外は直リンクNG
+		http.authorizeRequests().antMatchers("/login").permitAll().antMatchers("/user/signup").permitAll().antMatchers("/user/signup/rest").permitAll().antMatchers("/admin").hasAuthority("ROLE_ADMIN")//権限制御
+					.anyRequest().authenticated(); // それ以外は直リンクNG
 
 		// ログイン処理
 		http.formLogin().loginProcessingUrl("/login").loginPage("/login").failureUrl("/login?error")
