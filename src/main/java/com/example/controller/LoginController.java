@@ -11,11 +11,11 @@ public class LoginController{
 	@GetMapping("/login")
 	public String getLogin(){
 		return "login/login";
-		}
+	}
 	
 	/**ユーザー一覧画面にリダイレクト*/
 	@PostMapping("login")
 	public String postLogin() {
 		return "redirect:/user/list";
-		}
 	}
+}
