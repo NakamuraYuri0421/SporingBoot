@@ -10,8 +10,6 @@ import lombok.Data;
 @Entity
 @Table(name = "t_salary")
 public class Salary {
-	//private String userId;
-	//private String yearMonth;
 	@EmbeddedId
 	private SalaryKey salaryKey;
 	private Integer salary;
